@@ -1,6 +1,6 @@
 [phases.build]
   cmds = ["...", "java -Djarmode=layertools -jar target/*-exec.jar extract"]
 [start]
-  runImage = "openjdk:17-jdk-slim"
-  onlyIncludeFiles = ['./dependencies/*','./snapshot-dependencies/*','./spring-boot-loader/*','./application/*']
-  cmd = "java -Dserver.port=$PORT $JAVA_OPTS org.springframework.boot.loader.JarLauncher"
+  runImage = "eclipse-temurin:17-jdk-alpine"
+  onlyIncludeFiles = ['./dependencies','./snapshot-dependencies','./spring-boot-loader','./application']
+  cmd = "$JAVA_HOME/bin/java -Dserver.port=$PORT $JAVA_OPTS org.springframework.boot.loader.JarLauncher"
