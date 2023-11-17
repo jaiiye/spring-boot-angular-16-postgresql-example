@@ -2,5 +2,10 @@
   cmds = ["...", "java -Djarmode=layertools -jar target/*-exec.jar extract"]
 [start]
   runImage = "eclipse-temurin:17-jdk-alpine"
-  onlyIncludeFiles = ['./dependencies','./snapshot-dependencies','./spring-boot-loader','./application']
+  onlyIncludeFiles = [
+    { from = './dependencies/', to = './' },
+    { from = './snapshot-dependencies/', to = './' },
+    { from = './spring-boot-loader/', to = './' },
+    { from = './application/', to = './' }
+  ]
   cmd = "$JAVA_HOME/bin/java -Dserver.port=$PORT $JAVA_OPTS org.springframework.boot.loader.JarLauncher"
